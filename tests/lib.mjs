@@ -72,10 +72,18 @@ export async function launch() {
 
 export async function openApp(page) {
   await page.goto('https://chatgpt.com/', { waitUntil: 'networkidle2' });
-  await page.waitForFunction(
-    () => document.getElementById('cgb-host')?.shadowRoot?.getElementById('fab'),
-    { timeout: 15000 }
-  );
+  try {
+    await page.waitForFunction(
+      () => document.getElementById('cgb-host')?.shadowRoot?.getElementById('fab'),
+      { timeout: 15000 }
+    );
+  } catch {
+    throw new Error(
+      'The extension did not load. Branded Chrome 137+ ignores --load-extension; ' +
+        'point CHROME_PATH at Chromium or Chrome for Testing ' +
+        '(npx @puppeteer/browsers install chrome@stable).'
+    );
+  }
 }
 
 /* Runs a function with the panel's shadow root as `s`. */

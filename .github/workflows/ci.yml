@@ -45,14 +45,18 @@ jobs:
           npm run build
           cd dist && sha256sum *.zip > SHA256SUMS.txt && cat SHA256SUMS.txt
 
+      # Branded Chrome 137+ ignores --load-extension, so the tests need
+      # Chrome for Testing (or Chromium). Preinstalled google-chrome will not do.
+      - name: Install Chrome for Testing
+        run: |
+          OUT=$(npx --yes @puppeteer/browsers@2 install chrome@stable --path "$RUNNER_TEMP/browsers")
+          echo "$OUT"
+          echo "CHROME_PATH=$(echo "$OUT" | awk '{print $2}' | tail -n1)" >> "$GITHUB_ENV"
+
       - name: End-to-end tests against a fake chatgpt.com
-        env:
-          CHROME_PATH: /usr/bin/google-chrome
         run: npm run test:e2e
 
       - name: Layout tests
-        env:
-          CHROME_PATH: /usr/bin/google-chrome
         run: npm run test:layout
 
       - name: Upload packaged extension

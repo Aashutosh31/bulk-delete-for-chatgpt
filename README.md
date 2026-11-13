@@ -130,7 +130,14 @@ npm run screenshots
 
 The e2e suite serves a self-signed fake `chatgpt.com` on `127.0.0.1:8443`, maps the
 hostname in Chrome, and drives the real extension. It never contacts your account.
-Set `CHROME_PATH` if Chrome/Chromium is not in a standard location.
+
+Branded Chrome 137+ ignores `--load-extension`, so the tests need Chromium or Chrome
+for Testing. If neither is on your `PATH`:
+
+```bash
+npx @puppeteer/browsers install chrome@stable   # prints the binary path
+CHROME_PATH=/that/path npm test
+```
 
 ## Contributing
 
