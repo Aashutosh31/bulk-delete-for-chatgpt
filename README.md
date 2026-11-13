@@ -49,9 +49,9 @@ one-time fee and this project has none.
 
 <!-- AMO-LINK: swap this block for the live listing link when review finishes. -->
 
-The add-on has been submitted to [addons.mozilla.org](https://addons.mozilla.org)
-and is waiting for review. Once it is approved, installing takes two clicks:
-open the listing, press **Add to Firefox**, then **Add**.
+The add-on is being prepared for [addons.mozilla.org](https://addons.mozilla.org).
+Once the listing is live, installing takes two clicks: open it, press **Add to
+Firefox**, then **Add**.
 
 Until then, use the manual steps below. They work today.
 
