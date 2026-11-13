@@ -41,29 +41,46 @@ every line in a few minutes.
 
 ## Install
 
-### Firefox (recommended)
+Firefox gets a one-click install from Mozilla's add-on site. Chrome and its
+relatives install by hand, because the Chrome Web Store charges developers a
+one-time fee and this project has none.
 
-**Permanent (signed, unlisted):** download the `.zip` from
-[Releases](https://github.com/Aashutosh31/bulk-delete-for-chatgpt/releases),
-then sign it as an unlisted add-on following
-[docs/PUBLISHING.md](docs/PUBLISHING.md) (free, needs an AMO account), and install
-the resulting `.xpi`.
+### Firefox — one click
 
-**Temporary (no account needed):**
+<!-- AMO-LINK: swap this block for the live listing link when review finishes. -->
 
-1. Download and unpack `bulk-delete-for-chatgpt-firefox-<version>.zip`.
-2. Open `about:debugging#/runtime/this-firefox`.
-3. **Load Temporary Add-on…** → pick the unzipped `manifest.json`.
-4. Reload `https://chatgpt.com`.
+The add-on has been submitted to [addons.mozilla.org](https://addons.mozilla.org)
+and is waiting for review. Once it is approved, installing takes two clicks:
+open the listing, press **Add to Firefox**, then **Add**.
 
-Temporary add-ons disappear when Firefox restarts.
+Until then, use the manual steps below. They work today.
 
-### Chrome / Chromium / Brave / Edge
+### Firefox — manual
 
-1. Download and unpack `bulk-delete-for-chatgpt-chrome-<version>.zip`.
-2. Open `chrome://extensions` → enable **Developer mode**.
-3. **Load unpacked** → select the unzipped folder.
-4. Reload `https://chatgpt.com`.
+1. Open [Releases](https://github.com/Aashutosh31/bulk-delete-for-chatgpt/releases)
+   and download `bulk-delete-for-chatgpt-firefox-<version>.zip`.
+2. Unzip it. The folder should contain `manifest.json`, `src/`, and `icons/`.
+3. In the Firefox address bar, open `about:debugging#/runtime/this-firefox`.
+4. Press **Load Temporary Add-on…** and choose `manifest.json` from that folder.
+5. Open `https://chatgpt.com` and reload the page.
+
+Firefox removes temporary add-ons when it closes. That is normal: load it the same
+way next time. Your chats are never affected by loading or reloading the add-on.
+
+### Chrome, Edge, Brave — manual
+
+1. Open [Releases](https://github.com/Aashutosh31/bulk-delete-for-chatgpt/releases)
+   and download `bulk-delete-for-chatgpt-chrome-<version>.zip`, then unzip it.
+2. In the address bar, open `chrome://extensions`.
+3. Turn on **Developer mode** (top right).
+4. Press **Load unpacked** and choose the unzipped folder.
+5. Open `https://chatgpt.com` and reload the page.
+
+Chrome may show a reminder that developer-mode extensions are on. You can ignore
+it. The extension stays installed until you remove it from that same page.
+
+Firefox 140 or newer is required (142 on Android). Any recent Chrome, Edge, or
+Brave works.
 
 ## Use
 

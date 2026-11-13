@@ -23,5 +23,6 @@ First public release.
 - In-memory action log with JSON export; local settings plus last-run counts, no
   titles or IDs; **Clear data** button.
 - Firefox MV3 and Chrome MV3 manifests, store-ready packaging, and icons.
+  Firefox 140 or newer is required (142 on Android).
 - End-to-end test suite against a self-signed fake `chatgpt.com`, a manifest checker,
   a source privacy guard, and CI/release workflows.

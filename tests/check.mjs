@@ -56,6 +56,16 @@ for (const [label, manifest] of [['chrome', chrome], ['firefox', firefox]]) {
 
 check('firefox declares a stable gecko id', firefox.browser_specific_settings?.gecko?.id === 'bulk-delete-for-chatgpt@aashutosh31.github.io');
 check(
+  'firefox min version supports data collection permissions',
+  Number(firefox.browser_specific_settings?.gecko?.strict_min_version?.split('.')[0]) >= 140,
+  firefox.browser_specific_settings?.gecko?.strict_min_version
+);
+check(
+  'android min version supports data collection permissions',
+  Number(firefox.browser_specific_settings?.gecko_android?.strict_min_version?.split('.')[0]) >= 142,
+  firefox.browser_specific_settings?.gecko_android?.strict_min_version
+);
+check(
   'firefox declares no data collection',
   JSON.stringify(firefox.browser_specific_settings?.gecko?.data_collection_permissions) === JSON.stringify({ required: ['none'] })
 );

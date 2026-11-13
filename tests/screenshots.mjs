@@ -10,6 +10,8 @@ fs.mkdirSync(docs, { recursive: true });
 const app = await startServer();
 const browser = await launch();
 const page = await browser.newPage();
+/* AMO recommends 1280x800 screenshots. */
+await page.setViewport({ width: 1280, height: 800 });
 
 await openApp(page);
 await page.evaluate(() => document.getElementById('cgb-host').shadowRoot.getElementById('fab').click());
