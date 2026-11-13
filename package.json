@@ -20,7 +20,7 @@
     "test:e2e": "node tests/e2e.mjs",
     "test:layout": "node tests/layout.mjs",
     "screenshots": "node tests/screenshots.mjs",
-    "test": "npm run check && npm run guard && npm run test:e2e && npm run test:layout"
+    "test": "npm run build && npm run check && npm run guard && npm run test:e2e && npm run test:layout"
   },
   "devDependencies": {
     "puppeteer-core": "25.17.0"
