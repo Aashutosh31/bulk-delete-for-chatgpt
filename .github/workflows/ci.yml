@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Check, guard, and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Manifest and packaging checks
+        run: npm run check
+
+      - name: Privacy guard
+        run: npm run guard
+
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build extension packages
+        run: |
+          npm run build
+          cd dist && sha256sum *.zip > SHA256SUMS.txt && cat SHA256SUMS.txt
+
+      - name: End-to-end tests against a fake chatgpt.com
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run test:e2e
+
+      - name: Layout tests
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run test:layout
+
+      - name: Upload packaged extension
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-packages
+          path: dist/*
+          if-no-files-found: error
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: docs/screenshot-*.png
+          if-no-files-found: ignore
