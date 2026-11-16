@@ -47,13 +47,9 @@ one-time fee and this project has none.
 
 ### Firefox — one click
 
-<!-- AMO-LINK: swap this block for the live listing link when review finishes. -->
-
-The add-on is being prepared for [addons.mozilla.org](https://addons.mozilla.org).
-Once the listing is live, installing takes two clicks: open it, press **Add to
-Firefox**, then **Add**.
-
-Until then, use the manual steps below. They work today.
+Install **Bulk Delete for ChatGPT** from the
+[Firefox Add-ons listing](https://addons.mozilla.org/addon/bulk-delete-for-chatgpt/):
+open the listing, press **Add to Firefox**, then **Add**.
 
 ### Firefox — manual
 
