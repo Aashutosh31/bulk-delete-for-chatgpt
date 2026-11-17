@@ -29,11 +29,10 @@ If you only delete one or two test chats, you can skip this.
 
 ### Firefox, easy way
 
-Once the add-on is approved by Mozilla, you install it like any other extension:
-open its page on addons.mozilla.org, click **Add to Firefox**, then **Add**. Updates
-arrive by themselves.
+Install it from Mozilla's add-on site:
+[**Bulk Delete for ChatGPT**](https://addons.mozilla.org/en-US/firefox/addon/bulk-delete-for-chatgpt/)
 
-If that page is not ready yet, use the manual way below.
+Click **Add to Firefox**, then **Add**. Updates arrive by themselves.
 
 ### Firefox, manual way
 
